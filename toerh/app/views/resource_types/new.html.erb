@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<h1>Skapa resurstyp</h1>
+	<% if flash[:notice] %>
+		<div class="error">
+			<h2><%= flash[:notice] %></h2>
+		</div>
+	<% end %>
+	<% if @resource.errors.any? %>
+		<div class="error-messages">
+			<ul>
+				<% @resource.errors.full_messages.each do |msg| %>
+					<li> <%= msg %> </li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<%= form_for @resource do |f|%>
+		<div class="text_field">
+			<%= f.label :Resurstyp %>
+			<%= f.text_field :resource_type %>
+			<%= f.submit :Skapa_typ %>
+		</div>
+	<% end %>
+	<br />
+	<%= link_to "Tillbaka", loggedin_path %>
+</div>

@@ -1,10 +1,14 @@
 Toerh::Application.routes.draw do
+  get "api_users/index"
+  get "applications/index"
+  get "app/index"
+  get "application/index"
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'home#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -13,7 +17,40 @@ Toerh::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :tags
+  resources :licenses
+  resources :users
+  resources :resource_types
+  resources :api_apps
+
+  resources :resources do
+    resources :licenses
+    resources :resource_types
+    resources :tags
+    resources :users
+  end
+
+  resources :licenses do
+    resources :resources
+  end
+
+  resources :tags do
+    resources :resources
+  end
+
+  resources :users do
+    resources :resources
+  end
+
+
+
+
+
+  get 'apps' => 'api_apps#new', :as => 'apps'
+  get 'api_user' => 'api_users#show', :as => 'api_user'
+  get 'loggedin' =>'loggedin#show', :as => 'loggedin'
+  post 'login' => 'users#login', :as => 'login'
+  get 'logout' =>  'users#logout', :as => 'logout'
 
   # Example resource route with options:
   #   resources :products do

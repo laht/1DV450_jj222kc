@@ -1,0 +1,8 @@
+<div class="jumbotron">
+	Ny Resurs<br />
+	<%= link_to "Ny tag", :controller => :tags, :action => :new %><br />
+	<%= link_to "Ny resurstyp", :controller => :resource_types, :action => :new %><br />
+	<%= link_to "Ny Licens", :controller => :licenses, :action => :new %><br />
+	<%= link_to "Visa min apinyckel", api_user_path %><br />
+	<%= link_to "Logga ut", logout_path %>
+</div>

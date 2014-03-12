@@ -4,7 +4,7 @@ class CreateResources < ActiveRecord::Migration
     	t.references :resource_type
     	t.references :user
     	t.references :license
-
+    	t.string "resource", :null => false
 
     	t.timestamps
     end
